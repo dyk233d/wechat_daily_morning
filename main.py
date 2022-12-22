@@ -23,10 +23,10 @@ def get_weather():
   url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
   res = requests.get(url).json()
   weather = res['data']['list'][0]
-  str = '天气：' + str(weather["weather"])+'\n当前气温：'+ str(weather["temp"]) \
+  str1 = '天气：' + str(weather["weather"])+'\n当前气温：'+ str(weather["temp"]) \
           +'\n最低气温：'+str(weather["low"])+'\n最高气温：'+str(weather["high"]) \
           +'\n风向：'+str(weather["wind"]) +'\n空气质量：' + str(weather["airQuality"]) +'\n湿度：' + str(weather["humidity"])
-  return str
+  return str1
 
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
