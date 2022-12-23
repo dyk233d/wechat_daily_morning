@@ -39,10 +39,17 @@ def get_birthday():
     next = next.replace(year=next.year + 1)
   return (next - today).days
 
+#key:caihongpi  彩虹p
+#key:healthtip  健康小贴士
+#key:qiaomen  生活小窍门
+#everyday  一日一句英语 ['result']['content'],['result']['note']
+#star 星座 Libra:天秤座 Cancer：巨蟹座
 def get_words():
-  #words = requests.get("https://api.shadiao.pro/chp")   #这个能用
+  #words = requests.get("https://api.shadiao.pro/chp")   #这个能用,彩虹p，这个api还有pyq 朋友圈文案 和 du 毒鸡汤
   param = {'key': tianxin_apikey}
-  words = requests.post("https://apis.tianapi.com/healthtip/index",params = param)
+  tips = random.choice(['healthtip', 'qiaomen'])
+  url = "https://apis.tianapi.com/"+tips+"/index"
+  words = requests.post(url,params = param)
   if words.status_code != 200:
     return get_words()
   return words.json()['result']['content']
